@@ -1,0 +1,119 @@
+[build-system]
+requires = ["setuptools>=45", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "camara-common-data-types"
+version = "0.1.0"
+description = "Pydantic models for CAMARA API common data types - Python implementation"
+readme = "README.md"
+license = {text = "Apache-2.0"}
+authors = [
+    {name = "Cameron Burger", email = "cameronburger@vt.edu"},
+]
+maintainers = [
+    {name = "Cameron Burger", email = "cameronburger@vt.edu"},
+]
+keywords = ["camara", "api", "pydantic", "validation", "telecommunications", "5g"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+    "Topic :: Internet :: WWW/HTTP :: HTTP Servers",
+    "Topic :: Communications :: Telephony",
+]
+requires-python = ">=3.8"
+dependencies = [
+    "pydantic>=2.0.0,<3.0.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0", 
+    "black>=23.0.0",
+    "flake8>=6.0.0",
+    "mypy>=1.0.0",
+]
+test = [
+    "pytest>=7.0.0",
+    "pytest-asyncio>=0.21.0",
+]
+
+[project.urls]
+Homepage = "https://github.com/VT-Cameron-Burger/camara-data-types"
+Repository = "https://github.com/VT-Cameron-Burger/camara-data-types"
+"Bug Reports" = "https://github.com/VT-Cameron-Burger/camara-data-types/issues"
+Documentation = "https://github.com/VT-Cameron-Burger/camara-data-types#readme"
+"CAMARA Project" = "https://github.com/camaraproject"
+"CAMARA Specification" = "https://github.com/camaraproject/Commonalities"
+
+[tool.setuptools.packages.find]
+include = ["CommonDataTypes*"]
+
+[tool.black]
+line-length = 88
+target-version = ['py38', 'py39', 'py310', 'py311', 'py312']
+include = '\.pyi?$'
+extend-exclude = '''
+# A regex preceded by ^/ will apply only to files and directories
+# in the root of the project.
+(
+  ^/build/
+  | ^/dist/
+  | ^/\.git/
+  | ^/\.mypy_cache/
+  | ^/__pycache__/
+  | ^/\.pytest_cache/
+  | ^/\.venv/
+  | ^/venv/
+)
+'''
+# Enable preview features for more modern formatting
+preview = true
+# Skip string normalization to preserve existing quote style preferences
+skip-string-normalization = false
+
+[tool.mypy]
+python_version = "3.8"
+warn_return_any = true
+warn_unused_configs = true
+disallow_untyped_defs = true
+disallow_incomplete_defs = true
+check_untyped_defs = true
+disallow_untyped_decorators = true
+no_implicit_optional = true
+warn_redundant_casts = true
+warn_unused_ignores = true
+warn_no_return = true
+warn_unreachable = true
+strict_equality = true
+
+[tool.pytest.ini_options]
+testpaths = [
+    "tests",
+    ".",
+]
+python_files = [
+    "test_*.py",
+    "*_test.py",
+]
+python_classes = [
+    "Test*",
+]
+python_functions = [
+    "test_*",
+]
+addopts = "-v --tb=short --strict-markers"
+markers = [
+    "integration: marks tests as integration tests",
+    "unit: marks tests as unit tests",
+]

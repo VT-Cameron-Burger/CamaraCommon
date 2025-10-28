@@ -1,0 +1,18 @@
+include README.md
+include LICENSE
+include MANIFEST.in
+include pyproject.toml
+include setup.py
+include test_common_types.py
+
+recursive-include CommonDataTypes *.py
+recursive-exclude CommonDataTypes __pycache__
+recursive-exclude CommonDataTypes *.py[co]
+
+global-exclude .DS_Store
+global-exclude *.pyc
+global-exclude *.pyo
+global-exclude __pycache__
+global-exclude .git*
+global-exclude .coverage*
+global-exclude .pytest_cache
