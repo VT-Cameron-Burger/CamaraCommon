@@ -2,10 +2,10 @@
 
 from typing import Optional
 from pydantic import BaseModel, model_validator
-from ..communication.PhoneNumber import PhoneNumber
-from ..communication.NetworkAccessIdentifier import NetworkAccessIdentifier
-from ..network.DeviceIpv4Addr import DeviceIpv4Addr
-from ..network.DeviceIpv6Address import DeviceIpv6Address
+from ..Communication.PhoneNumber import PhoneNumber
+from ..Communication.NetworkAccessIdentifier import NetworkAccessIdentifier
+from ..Network.DeviceIpv4Addr import DeviceIpv4Addr
+from ..Network.DeviceIpv6Address import DeviceIpv6Address
 
 
 class Device(BaseModel):

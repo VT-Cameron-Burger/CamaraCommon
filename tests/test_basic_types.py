@@ -5,7 +5,7 @@ Tests for basic data types (XCorrelator, TimePeriod, ErrorInfo).
 import pytest
 from datetime import datetime, timezone
 
-from CommonDataTypes.basic import XCorrelator, TimePeriod, ErrorInfo
+from Basic import XCorrelator, TimePeriod, ErrorInfo
 
 
 class TestXCorrelator:
@@ -48,7 +48,7 @@ class TestTimePeriod:
     def test_time_period_start_only(self):
         """Test TimePeriod with only start date."""
         start = datetime.now(timezone.utc)
-        time_period = TimePeriod(startDate=start)
+        time_period = TimePeriod(startDate=start)  # type: ignore
         assert time_period.startDate == start
         assert time_period.endDate is None
 

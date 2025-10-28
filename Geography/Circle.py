@@ -3,7 +3,7 @@
 from pydantic import BaseModel, Field
 from .Area import Area
 from .AreaType import AreaType
-from ..geography.Point import Point
+from .Point import Point
 
 
 class Circle(Area):

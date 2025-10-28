@@ -3,9 +3,8 @@ Tests for geography and area data types.
 """
 
 import pytest
-
-from CommonDataTypes.geography import Latitude, Longitude, Point, PointList
-from CommonDataTypes.area import AreaType, Area, Circle, Polygon
+from Geography import Latitude, Longitude, Point, PointList
+from Geography import AreaType, Area, Circle, Polygon
 
 
 class TestGeographyTypes:

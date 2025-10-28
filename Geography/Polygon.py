@@ -3,7 +3,7 @@
 from pydantic import BaseModel
 from .Area import Area
 from .AreaType import AreaType
-from ..geography.PointList import PointList
+from .PointList import PointList
 
 
 class Polygon(Area):
