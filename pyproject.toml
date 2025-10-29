@@ -49,10 +49,10 @@ test = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/VT-Cameron-Burger/camara-data-types"
-Repository = "https://github.com/VT-Cameron-Burger/camara-data-types"
-"Bug Reports" = "https://github.com/VT-Cameron-Burger/camara-data-types/issues"
-Documentation = "https://github.com/VT-Cameron-Burger/camara-data-types#readme"
+Homepage = "https://github.com/VT-Cameron-Burger/CamaraCommon"
+Repository = "https://github.com/VT-Cameron-Burger/CamaraCommon"
+"Bug Reports" = "https://github.com/VT-Cameron-Burger/CamaraCommon/issues"
+Documentation = "https://github.com/VT-Cameron-Burger/CamaraCommon#readme"
 "CAMARA Project" = "https://github.com/camaraproject"
 "CAMARA Specification" = "https://github.com/camaraproject/Commonalities"
 

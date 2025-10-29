@@ -224,7 +224,7 @@ Apache 2.0 - See LICENSE file for details
 This package implements the official CAMARA common specification in Python. 
 
 ### For Python Implementation Issues
-- Report bugs or request features: [GitHub Issues](https://github.com/VT-Cameron-Burger/camara-data-types/issues)
+- Report bugs or request features: [GitHub Issues](https://github.com/VT-Cameron-Burger/CamaraCommon/issues)
 - Submit pull requests for implementation improvements
 
 ### For CAMARA Specification Changes
@@ -245,4 +245,4 @@ This package implements data types from the [CAMARA project](https://github.com/
 **Cameron Burger**
 - Email: cameronburger@vt.edu
 - GitHub: [@VT-Cameron-Burger](https://github.com/VT-Cameron-Burger)
-- Package Repository: [camara-data-types](https://github.com/VT-Cameron-Burger/camara-data-types)
+- Package Repository: [CamaraCommon](https://github.com/VT-Cameron-Burger/CamaraCommon)

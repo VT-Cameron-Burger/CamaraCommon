@@ -13,7 +13,7 @@ setup(
     description="Pydantic models for CAMARA API common data types - Python implementation",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/VT-Cameron-Burger/camara-data-types",
+    url="https://github.com/VT-Cameron-Burger/CamaraCommon",
     packages=find_packages(),
     classifiers=[
         "Development Status :: 4 - Beta",
@@ -49,10 +49,10 @@ setup(
     },
     keywords="camara, api, pydantic, validation, telecommunications, 5g",
     project_urls={
-        "Bug Reports": "https://github.com/VT-Cameron-Burger/camara-data-types/issues",
-        "Source": "https://github.com/VT-Cameron-Burger/camara-data-types",
+        "Bug Reports": "https://github.com/VT-Cameron-Burger/CamaraCommon/issues",
+        "Source": "https://github.com/VT-Cameron-Burger/CamaraCommon",
         "Documentation": (
-            "https://github.com/VT-Cameron-Burger/camara-data-types#readme"
+            "https://github.com/VT-Cameron-Burger/CamaraCommon#readme"
         ),
         "CAMARA Project": "https://github.com/camaraproject",
         "CAMARA Specification": "https://github.com/camaraproject/Commonalities",
