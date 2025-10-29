@@ -1,6 +1,7 @@
 """Circle area type for CAMARA APIs."""
 
 from pydantic import BaseModel, Field
+
 from .Area import Area
 from .AreaType import AreaType
 from .Point import Point

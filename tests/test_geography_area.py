@@ -3,16 +3,9 @@ Tests for geography and area data types.
 """
 
 import pytest
-from CamaraCommon.Geography import (
-    Latitude,
-    Longitude,
-    Point,
-    PointList,
-    AreaType,
-    Area,
-    Circle,
-    Polygon,
-)
+
+from CamaraCommon.Geography import (Area, AreaType, Circle, Latitude,
+                                    Longitude, Point, PointList, Polygon)
 
 
 class TestGeographyTypes:

@@ -1,6 +1,7 @@
 """Polygon area type for CAMARA APIs."""
 
 from pydantic import BaseModel
+
 from .Area import Area
 from .AreaType import AreaType
 from .PointList import PointList

@@ -4,15 +4,12 @@ Tests for network data types (IP addresses, ports).
 
 import pytest
 
-from CamaraCommon.Network import (
-    DeviceIpv6Address,
-    DeviceIpv4Address,
-    Port,
-)
+from CamaraCommon.Network import (DeviceIpv4Addr, DeviceIpv6Address, Port,
+                                  SingleIpv4Addr)
 
 
-class TestSingleIpv4Address:
-    """Test SingleIpv4Address validation."""
+class TestSingleIpv4Addr:
+    """Test SingleIpv4Addr validation."""
 
     def test_valid_ipv4_addresses(self):
         """Test valid IPv4 addresses."""
@@ -27,8 +24,8 @@ class TestSingleIpv4Address:
         ]
 
         for address in valid_addresses:
-            ipv4 = DeviceIpv4Address(publicAddress=address, privateAddress="0.0.0.0")
-            assert ipv4.publicAddress == address
+            ipv4 = SingleIpv4Addr(value=address)
+            assert ipv4.value == address
 
     def test_invalid_ipv4_addresses(self):
         """Test invalid IPv4 addresses."""
@@ -46,7 +43,7 @@ class TestSingleIpv4Address:
 
         for address in invalid_addresses:
             with pytest.raises(ValueError):
-                DeviceIpv4Address(publicAddress=address)
+                SingleIpv4Addr(value=address)
 
 
 class TestDeviceIpv6Address:
@@ -123,36 +120,36 @@ class TestDeviceIpv4Addr:
 
     def test_valid_device_ipv4_with_port(self):
         """Test valid DeviceIpv4Addr with public port."""
-        device_ipv4 = DeviceIpv4Address(
-            publicAddress="84.125.93.10",
+        device_ipv4 = DeviceIpv4Addr(
+            publicAddress=SingleIpv4Addr(value="84.125.93.10"),
             publicPort=Port(value=59765),
         )
-        assert device_ipv4.publicAddress == "84.125.93.10"
+        assert device_ipv4.publicAddress.value == "84.125.93.10"
         assert device_ipv4.publicPort is not None
         assert device_ipv4.publicPort.value == 59765
         assert device_ipv4.privateAddress is None
 
     def test_valid_device_ipv4_with_private_address(self):
         """Test valid DeviceIpv4Addr with private address."""
-        device_ipv4 = DeviceIpv4Address(
-            publicAddress="84.125.93.10",
-            privateAddress="192.168.1.100",
+        device_ipv4 = DeviceIpv4Addr(
+            publicAddress=SingleIpv4Addr(value="84.125.93.10"),
+            privateAddress=SingleIpv4Addr(value="192.168.1.100"),
         )
-        assert device_ipv4.publicAddress == "84.125.93.10"
+        assert device_ipv4.publicAddress.value == "84.125.93.10"
         assert device_ipv4.privateAddress is not None
-        assert device_ipv4.privateAddress == "192.168.1.100"
+        assert device_ipv4.privateAddress.value == "192.168.1.100"
         assert device_ipv4.publicPort is None
 
     def test_valid_device_ipv4_with_both(self):
         """Test valid DeviceIpv4Addr with both private address and public port."""
-        device_ipv4 = DeviceIpv4Address(
-            publicAddress="84.125.93.10",
-            privateAddress="192.168.1.100",
+        device_ipv4 = DeviceIpv4Addr(
+            publicAddress=SingleIpv4Addr(value="84.125.93.10"),
+            privateAddress=SingleIpv4Addr(value="192.168.1.100"),
             publicPort=Port(value=8080),
         )
-        assert device_ipv4.publicAddress == "84.125.93.10"
+        assert device_ipv4.publicAddress.value == "84.125.93.10"
         assert device_ipv4.privateAddress is not None
-        assert device_ipv4.privateAddress == "192.168.1.100"
+        assert device_ipv4.privateAddress.value == "192.168.1.100"
         assert device_ipv4.publicPort is not None
         assert device_ipv4.publicPort.value == 8080
 
@@ -161,7 +158,7 @@ class TestDeviceIpv4Addr:
         with pytest.raises(
             ValueError, match="Either privateAddress or publicPort must be specified"
         ):
-            DeviceIpv4Address(
-                publicAddress="84.125.93.10"
+            DeviceIpv4Addr(
+                publicAddress=SingleIpv4Addr(value="84.125.93.10")
                 # Missing both privateAddress and publicPort
             )

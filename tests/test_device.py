@@ -4,9 +4,10 @@ Tests for device data types.
 
 import pytest
 
+from CamaraCommon.Communication import NetworkAccessIdentifier, PhoneNumber
 from CamaraCommon.Device import Device, DeviceResponse
-from CamaraCommon.Communication import PhoneNumber, NetworkAccessIdentifier
-from CamaraCommon.Network import DeviceIpv4Address, DeviceIpv6Address, Port
+from CamaraCommon.Network import (DeviceIpv4Addr, DeviceIpv6Address, Port,
+                                  SingleIpv4Addr)
 
 
 class TestDevice:
@@ -34,13 +35,13 @@ class TestDevice:
 
     def test_device_with_ipv4_address(self):
         """Test Device with IPv4 address."""
-        ipv4_addr = DeviceIpv4Address(
-            publicAddress="84.125.93.10",
+        ipv4_addr = DeviceIpv4Addr(
+            publicAddress=SingleIpv4Addr(value="84.125.93.10"),
             publicPort=Port(value=59765),
         )
         device = Device(ipv4Address=ipv4_addr)
         assert device.ipv4Address is not None
-        assert device.ipv4Address.publicAddress == "84.125.93.10"
+        assert device.ipv4Address.publicAddress.value == "84.125.93.10"
         assert device.phoneNumber is None
         assert device.networkAccessIdentifier is None
         assert device.ipv6Address is None
@@ -58,8 +59,8 @@ class TestDevice:
 
     def test_device_with_multiple_identifiers(self):
         """Test Device with multiple identifiers."""
-        ipv4_addr = DeviceIpv4Address(
-            publicAddress="84.125.93.10",
+        ipv4_addr = DeviceIpv4Addr(
+            publicAddress=SingleIpv4Addr(value="84.125.93.10"),
             publicPort=Port(value=59765),
         )
         device = Device(
@@ -68,7 +69,7 @@ class TestDevice:
         assert device.phoneNumber is not None
         assert device.phoneNumber.value == "+1234567890"
         assert device.ipv4Address is not None
-        assert device.ipv4Address.publicAddress == "84.125.93.10"
+        assert device.ipv4Address.publicAddress.value == "84.125.93.10"
 
     def test_device_no_identifiers(self):
         """Test Device with no identifiers (should fail)."""
@@ -92,13 +93,13 @@ class TestDeviceResponse:
 
     def test_device_response_with_ipv4(self):
         """Test DeviceResponse with exactly one IPv4 address."""
-        ipv4_addr = DeviceIpv4Address(
-            publicAddress="84.125.93.10",
+        ipv4_addr = DeviceIpv4Addr(
+            publicAddress=SingleIpv4Addr(value="84.125.93.10"),
             publicPort=Port(value=59765),
         )
         device_response = DeviceResponse(ipv4Address=ipv4_addr)
         assert device_response.ipv4Address is not None
-        assert device_response.ipv4Address.publicAddress == "84.125.93.10"
+        assert device_response.ipv4Address.publicAddress.value == "84.125.93.10"
         assert device_response.phoneNumber is None
         assert device_response.networkAccessIdentifier is None
         assert device_response.ipv6Address is None
@@ -111,8 +112,8 @@ class TestDeviceResponse:
         ):
             DeviceResponse(
                 phoneNumber=PhoneNumber(value="+1234567890"),
-                ipv4Address=DeviceIpv4Address(
-                    publicAddress="84.125.93.10",
+                ipv4Address=DeviceIpv4Addr(
+                    publicAddress=SingleIpv4Addr(value="84.125.93.10"),
                     publicPort=Port(value=59765),
                 ),
             )

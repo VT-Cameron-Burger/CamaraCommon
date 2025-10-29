@@ -2,10 +2,11 @@
 Tests for basic data types (XCorrelator, TimePeriod).
 """
 
-import pytest
 from datetime import datetime, timezone
 
-from CamaraCommon.Basic import XCorrelator, TimePeriod
+import pytest
+
+from CamaraCommon.Basic import TimePeriod, XCorrelator
 
 
 class TestXCorrelator:

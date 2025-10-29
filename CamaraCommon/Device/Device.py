@@ -1,9 +1,11 @@
 """Device data type for CAMARA APIs."""
 
 from typing import Optional
+
 from pydantic import BaseModel, model_validator
-from CamaraCommon.Communication import PhoneNumber, NetworkAccessIdentifier
-from CamaraCommon.Network import DeviceIpv4Address, DeviceIpv6Address
+
+from CamaraCommon.Communication import NetworkAccessIdentifier, PhoneNumber
+from CamaraCommon.Network import DeviceIpv4Addr, DeviceIpv6Address
 
 
 class Device(BaseModel):
@@ -29,7 +31,7 @@ class Device(BaseModel):
 
     phoneNumber: Optional[PhoneNumber] = None
     networkAccessIdentifier: Optional[NetworkAccessIdentifier] = None
-    ipv4Address: Optional[DeviceIpv4Address] = None
+    ipv4Address: Optional[DeviceIpv4Addr] = None
     ipv6Address: Optional[DeviceIpv6Address] = None
 
     @model_validator(mode="after")

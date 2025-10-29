@@ -1,6 +1,7 @@
 """DeviceResponse data type for CAMARA APIs."""
 
 from pydantic import BaseModel, model_validator
+
 from .Device import Device
 
 

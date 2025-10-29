@@ -1,7 +1,9 @@
 """HTTP 400 Bad Request error responses for CAMARA APIs."""
 
 from enum import Enum
+
 from pydantic import BaseModel, Field
+
 from .ErrorInfo import ErrorInfo
 
 

@@ -3,19 +3,11 @@ Tests for Error data types.
 """
 
 import pytest
-from CamaraCommon.Error import (
-    ErrorInfo,
-    ErrorFactory,
-    BadRequest,
-    BadRequestCode,
-    Unauthorized,
-    Forbidden,
-    NotFound,
-    UnprocessableContent,
-    InternalServerError,
-    TooManyRequests,
-    ServiceUnavailable,
-)
+
+from CamaraCommon.Error import (BadRequest, BadRequestCode, ErrorFactory,
+                                ErrorInfo, Forbidden, InternalServerError,
+                                NotFound, ServiceUnavailable, TooManyRequests,
+                                Unauthorized, UnprocessableContent)
 
 
 class TestErrorInfo:

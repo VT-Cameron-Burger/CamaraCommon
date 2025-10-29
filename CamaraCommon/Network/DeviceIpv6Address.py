@@ -1,7 +1,8 @@
 """DeviceIpv6Address data type for CAMARA APIs."""
 
-from pydantic import BaseModel, field_validator
 import ipaddress
+
+from pydantic import BaseModel, field_validator
 
 
 class DeviceIpv6Address(BaseModel):

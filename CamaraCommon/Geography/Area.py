@@ -1,6 +1,7 @@
 """Area base schema for CAMARA APIs."""
 
 from pydantic import BaseModel
+
 from .AreaType import AreaType
 
 

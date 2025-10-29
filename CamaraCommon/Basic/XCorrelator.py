@@ -1,7 +1,8 @@
 """XCorrelator data type for CAMARA APIs."""
 
-from pydantic import BaseModel, Field
 import re
+
+from pydantic import BaseModel, Field
 
 
 class XCorrelator(BaseModel):

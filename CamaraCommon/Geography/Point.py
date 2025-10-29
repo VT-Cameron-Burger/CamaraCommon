@@ -1,6 +1,7 @@
 """Point data type for CAMARA APIs."""
 
 from pydantic import BaseModel
+
 from .Latitude import Latitude
 from .Longitude import Longitude
 

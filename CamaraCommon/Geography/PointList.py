@@ -1,7 +1,9 @@
 """PointList data type for CAMARA APIs."""
 
 from typing import List
+
 from pydantic import BaseModel, field_validator
+
 from .Point import Point
 
 
