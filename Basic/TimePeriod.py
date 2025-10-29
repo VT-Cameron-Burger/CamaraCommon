@@ -16,10 +16,7 @@ class TimePeriod(BaseModel):
         # Use modern serialization instead of deprecated json_encoders
         json_schema_extra={
             "examples": [
-                {
-                    "startDate": "2023-01-01T12:00:00Z",
-                    "endDate": "2023-01-02T12:00:00Z"
-                }
+                {"startDate": "2023-01-01T12:00:00Z", "endDate": "2023-01-02T12:00:00Z"}
             ]
         }
     )

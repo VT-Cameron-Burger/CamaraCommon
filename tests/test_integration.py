@@ -1,19 +1,21 @@
 """
-Integration test runner for all CommonDataTypes tests.
+Integration test runner for all CamaraCommon tests.
 """
 
 import pytest
 import sys
 from pathlib import Path
 
-# Add the parent directory to sys.path to import CommonDataTypes
-sys.path.insert(0, str(Path(__file__).parent.parent))
-
-from CommonDataTypes import *
+from Basic import *
+from Communication import *
+from Device import *
+from Error import *
+from Geography import *
+from Network import *
 
 
 def test_package_imports():
-    """Test that all CommonDataTypes can be imported."""
+    """Test that all CamaraCommon can be imported."""
     # Basic types
     assert XCorrelator is not None
     assert TimePeriod is not None

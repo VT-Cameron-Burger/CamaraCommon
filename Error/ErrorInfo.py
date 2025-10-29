@@ -8,6 +8,7 @@ class ErrorInfo(BaseModel):
     Error information structure for API responses.
 
     Contains HTTP status code, error code, and human-readable message.
+    Based on CAMARA common.yaml ErrorInfo schema.
     """
 
     status: int = Field(..., description="HTTP response status code")

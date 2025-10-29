@@ -4,7 +4,7 @@ Tests for communication data types (PhoneNumber, NetworkAccessIdentifier).
 
 import pytest
 
-from CommonDataTypes.communication import PhoneNumber, NetworkAccessIdentifier
+from Communication import PhoneNumber, NetworkAccessIdentifier
 
 
 class TestPhoneNumber:

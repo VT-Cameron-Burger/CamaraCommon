@@ -4,7 +4,7 @@ Tests for network data types (IP addresses, ports).
 
 import pytest
 
-from CommonDataTypes.network import (
+from Network import (
     SingleIpv4Addr,
     DeviceIpv6Address,
     DeviceIpv4Addr,

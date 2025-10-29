@@ -6,7 +6,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="camara-common-data-types",
+    name="CamaraCommon",
     version="0.1.0",
     author="Cameron Burger",
     author_email="cameronburger@vt.edu",
@@ -39,8 +39,8 @@ setup(
             "pytest>=7.0.0",
             "pytest-asyncio>=0.21.0",
             "black>=23.0.0",
-            "flake8>=6.0.0",
             "mypy>=1.0.0",
+            "types-setuptools>=80.0.0",
         ],
         "test": [
             "pytest>=7.0.0",
@@ -51,7 +51,9 @@ setup(
     project_urls={
         "Bug Reports": "https://github.com/VT-Cameron-Burger/camara-data-types/issues",
         "Source": "https://github.com/VT-Cameron-Burger/camara-data-types",
-        "Documentation": "https://github.com/VT-Cameron-Burger/camara-data-types#readme",
+        "Documentation": (
+            "https://github.com/VT-Cameron-Burger/camara-data-types#readme"
+        ),
         "CAMARA Project": "https://github.com/camaraproject",
         "CAMARA Specification": "https://github.com/camaraproject/Commonalities",
     },

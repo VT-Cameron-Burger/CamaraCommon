@@ -3,7 +3,7 @@ requires = ["setuptools>=45", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "camara-common-data-types"
+name = "CamaraCommon"
 version = "0.1.0"
 description = "Pydantic models for CAMARA API common data types - Python implementation"
 readme = "README.md"
@@ -40,8 +40,8 @@ dev = [
     "pytest>=7.0.0",
     "pytest-asyncio>=0.21.0", 
     "black>=23.0.0",
-    "flake8>=6.0.0",
     "mypy>=1.0.0",
+    "types-setuptools>=80.0.0",
 ]
 test = [
     "pytest>=7.0.0",
@@ -55,9 +55,6 @@ Repository = "https://github.com/VT-Cameron-Burger/camara-data-types"
 Documentation = "https://github.com/VT-Cameron-Burger/camara-data-types#readme"
 "CAMARA Project" = "https://github.com/camaraproject"
 "CAMARA Specification" = "https://github.com/camaraproject/Commonalities"
-
-[tool.setuptools.packages.find]
-include = ["CommonDataTypes*"]
 
 [tool.black]
 line-length = 88

@@ -4,14 +4,10 @@ Tests for device data types.
 
 import pytest
 
-from CommonDataTypes.device import Device, DeviceResponse
-from CommonDataTypes.communication import PhoneNumber, NetworkAccessIdentifier
-from CommonDataTypes.network import (
-    DeviceIpv4Addr,
-    DeviceIpv6Address,
-    SingleIpv4Addr,
-    Port,
-)
+from Device import Device, DeviceResponse
+from Communication import PhoneNumber
+from Communication import NetworkAccessIdentifier
+from Network import DeviceIpv4Addr, DeviceIpv6Address, Port, SingleIpv4Addr
 
 
 class TestDevice:

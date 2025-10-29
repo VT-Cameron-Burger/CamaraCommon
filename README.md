@@ -8,12 +8,12 @@ A Python package containing Pydantic models for all common data types used acros
 
 This package provides validated Python classes for CAMARA API data types, organized into logical modules:
 
-- **Basic Types** - Core data structures (XCorrelator, TimePeriod, ErrorInfo)
+- **Basic** - Core data structures (XCorrelator, TimePeriod)
 - **Communication** - Identifiers (PhoneNumber, NetworkAccessIdentifier)  
 - **Network** - IP addresses and ports (IPv4, IPv6, Port)
 - **Device** - Device identification models
 - **Geography** - Coordinates and points (Latitude, Longitude, Point)
-- **Area** - Geometric areas (Circle, Polygon)
+- **Error** - Comprehensive error handling with HTTP status codes
 
 ## Installation
 
@@ -24,7 +24,11 @@ pip install -e .
 ## Quick Start
 
 ```python
-from CommonDataTypes import PhoneNumber, Device, Circle, Point, Latitude, Longitude
+from Basic import XCorrelator, TimePeriod
+from Communication import PhoneNumber, NetworkAccessIdentifier
+from Device import Device
+from Geography import Point, Circle, Latitude, Longitude
+from Error import ErrorInfo, ErrorFactory
 
 # Create a phone number with E.164 validation
 phone = PhoneNumber(value="+1234567890")
@@ -40,45 +44,63 @@ point = Point(
 
 # Create a circular area
 area = Circle(center=point, radius=1000.0)
+
+# Create standardized errors
+error = ErrorFactory.invalid_argument("Phone number format is invalid")
 ```
 
 ## Package Structure
 
 ```
 CommonDataTypes/
-├── basic/           # Core data types
+├── Basic/           # Core data types
 │   ├── XCorrelator.py
-│   ├── TimePeriod.py
-│   └── ErrorInfo.py
-├── communication/   # Communication identifiers
+│   └── TimePeriod.py
+├── Communication/   # Communication identifiers
 │   ├── PhoneNumber.py
 │   └── NetworkAccessIdentifier.py
-├── network/         # Network addressing
+├── Network/         # Network addressing
 │   ├── Port.py
 │   ├── SingleIpv4Addr.py
 │   ├── DeviceIpv6Address.py
 │   └── DeviceIpv4Addr.py
-├── device/          # Device identification
+├── Device/          # Device identification
 │   ├── Device.py
 │   └── DeviceResponse.py
-├── geography/       # Geographic coordinates
+├── Geography/       # Geographic coordinates
 │   ├── Latitude.py
 │   ├── Longitude.py
 │   ├── Point.py
 │   └── PointList.py
-└── area/           # Geometric areas
-    ├── AreaType.py
-    ├── Area.py
-    ├── Circle.py
-    └── Polygon.py
+├── Error/           # Error handling
+│   ├── ErrorInfo.py
+│   ├── ErrorFactory.py
+│   ├── BadRequest.py
+│   ├── Unauthorized.py
+│   ├── Forbidden.py
+│   ├── NotFound.py
+│   ├── UnprocessableContent.py
+│   ├── InternalServerError.py
+│   ├── TooManyRequests.py
+│   └── ServiceUnavailable.py
+└── tests/          # Test suite
+    ├── test_basic_types.py
+    ├── test_communication.py
+    ├── test_device.py
+    ├── test_error.py
+    ├── test_geography_area.py
+    ├── test_integration.py
+    └── test_network.py
 ```
 
 ## Key Features
 
 - **✅ Full Pydantic v2 Support** - Modern validation with excellent performance
 - **✅ CAMARA Specification Compliant** - Matches official CAMARA common schema
-- **✅ Type Safety** - Complete type annotations and validation
-- **✅ Comprehensive Testing** - Full test suite included
+- **✅ Type Safety** - Complete type annotations and MyPy validation
+- **✅ Comprehensive Testing** - Full test suite with pytest
+- **✅ Error Handling** - Complete HTTP error response framework
+- **✅ Development Tools** - MyPy and Black configuration included
 - **✅ Well Organized** - Logical module structure for easy navigation
 
 ## Data Types
@@ -87,7 +109,6 @@ CommonDataTypes/
 
 - **XCorrelator** - Correlation ID with pattern validation
 - **TimePeriod** - RFC 3339 datetime periods
-- **ErrorInfo** - Standard error response structure
 
 ### Communication Types
 
@@ -112,18 +133,24 @@ CommonDataTypes/
 - **Longitude** - Longitude validation (-180 to 180)
 - **Point** - Geographic coordinate pair
 - **PointList** - List of 3-15 points for polygons
-
-### Area Types
-
 - **AreaType** - CIRCLE/POLYGON enumeration
 - **Area** - Base area class with discriminator
 - **Circle** - Circular area with center and radius
 - **Polygon** - Polygonal area with boundary points
 
+### Error Types
+
+- **ErrorInfo** - Base error response structure
+- **ErrorFactory** - Convenient factory for creating standardized errors
+- **HTTP Error Classes** - BadRequest (400), Unauthorized (401), Forbidden (403), NotFound (404), UnprocessableContent (422), TooManyRequests (429), InternalServerError (500), ServiceUnavailable (503)
+
 ## Validation Examples
 
 ```python
-from CommonDataTypes import PhoneNumber, XCorrelator, Circle
+from Basic import XCorrelator
+from Communication import PhoneNumber
+from Geography import Point, Circle, Latitude, Longitude
+from Error import ErrorFactory
 
 # Phone number validation (E.164 format)
 phone = PhoneNumber(value="+1234567890")  # ✅ Valid
@@ -141,6 +168,10 @@ circle = Circle(
     ),
     radius=1000.0  # meters
 )
+
+# Error handling
+error = ErrorFactory.invalid_argument("Invalid phone number format")
+# Creates: BadRequest(status=400, code="INVALID_ARGUMENT", message="...")
 ```
 
 ## Testing
@@ -148,7 +179,35 @@ circle = Circle(
 Run the comprehensive test suite:
 
 ```bash
-python test_common_types.py
+# Run all tests
+pytest
+
+# Run specific test modules
+pytest tests/test_error.py -v
+pytest tests/test_basic_types.py -v
+pytest tests/test_geography_area.py -v
+
+# Run with coverage
+pytest --cov=. tests/
+
+# Type checking with MyPy
+mypy .
+```
+
+## Development
+
+### Setup Development Environment
+
+```bash
+# Install with development dependencies
+pip install -e ".[dev]"
+
+# Run linting and formatting
+black .
+mypy --config-file mypy.ini .
+
+# Clean temporary files
+./cleanup.sh
 ```
 
 ## Requirements

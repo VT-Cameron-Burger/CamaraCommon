@@ -1,11 +1,11 @@
 """
-Tests for basic data types (XCorrelator, TimePeriod, ErrorInfo).
+Tests for basic data types (XCorrelator, TimePeriod).
 """
 
 import pytest
 from datetime import datetime, timezone
 
-from Basic import XCorrelator, TimePeriod, ErrorInfo
+from Basic import XCorrelator, TimePeriod
 
 
 class TestXCorrelator:
@@ -60,30 +60,3 @@ class TestTimePeriod:
         assert time_period.startDate.tzinfo is not None
         if time_period.endDate is not None:
             assert time_period.endDate.tzinfo is not None
-
-
-class TestErrorInfo:
-    """Test ErrorInfo validation."""
-
-    def test_valid_error_info(self):
-        """Test valid ErrorInfo."""
-        error = ErrorInfo(status=400, code="INVALID_ARGUMENT", message="Test error")
-        assert error.status == 400
-        assert error.code == "INVALID_ARGUMENT"
-        assert error.message == "Test error"
-
-    def test_error_info_different_status_codes(self):
-        """Test ErrorInfo with different HTTP status codes."""
-        error_404 = ErrorInfo(
-            status=404, code="NOT_FOUND", message="Resource not found"
-        )
-        assert error_404.status == 404
-
-        error_500 = ErrorInfo(status=500, code="INTERNAL_ERROR", message="Server error")
-        assert error_500.status == 500
-
-    def test_error_info_with_long_message(self):
-        """Test ErrorInfo with longer message."""
-        long_message = "This is a very detailed error message that explains exactly what went wrong"
-        error = ErrorInfo(status=422, code="VALIDATION_ERROR", message=long_message)
-        assert error.message == long_message

@@ -3,11 +3,9 @@ include LICENSE
 include MANIFEST.in
 include pyproject.toml
 include setup.py
-include test_common_types.py
 
-recursive-include CommonDataTypes *.py
-recursive-exclude CommonDataTypes __pycache__
-recursive-exclude CommonDataTypes *.py[co]
+recursive-exclude __pycache__
+recursive-exclude *.py[co]
 
 global-exclude .DS_Store
 global-exclude *.pyc
