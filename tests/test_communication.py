@@ -4,7 +4,7 @@ Tests for communication data types (PhoneNumber, NetworkAccessIdentifier).
 
 import pytest
 
-from Communication import PhoneNumber, NetworkAccessIdentifier
+from CamaraCommon.Communication import PhoneNumber, NetworkAccessIdentifier
 
 
 class TestPhoneNumber:

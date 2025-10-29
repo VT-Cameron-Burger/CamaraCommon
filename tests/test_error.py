@@ -3,7 +3,7 @@ Tests for Error data types.
 """
 
 import pytest
-from Error import (
+from CamaraCommon.Error import (
     ErrorInfo,
     ErrorFactory,
     BadRequest,

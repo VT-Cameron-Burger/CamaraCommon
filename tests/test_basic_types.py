@@ -5,7 +5,7 @@ Tests for basic data types (XCorrelator, TimePeriod).
 import pytest
 from datetime import datetime, timezone
 
-from Basic import XCorrelator, TimePeriod
+from CamaraCommon.Basic import XCorrelator, TimePeriod
 
 
 class TestXCorrelator:

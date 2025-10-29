@@ -6,12 +6,12 @@ import pytest
 import sys
 from pathlib import Path
 
-from Basic import *
-from Communication import *
-from Device import *
-from Error import *
-from Geography import *
-from Network import *
+from CamaraCommon.Basic import *
+from CamaraCommon.Communication import *
+from CamaraCommon.Device import *
+from CamaraCommon.Error import *
+from CamaraCommon.Geography import *
+from CamaraCommon.Network import *
 
 
 def test_package_imports():
@@ -26,9 +26,7 @@ def test_package_imports():
     assert NetworkAccessIdentifier is not None
 
     # Network types
-    assert SingleIpv4Addr is not None
     assert DeviceIpv6Address is not None
-    assert DeviceIpv4Addr is not None
     assert Port is not None
 
     # Geography types
@@ -53,8 +51,8 @@ def test_basic_integration():
     # Create a device with multiple identifiers
     device = Device(
         phoneNumber=PhoneNumber(value="+1234567890"),
-        ipv4Address=DeviceIpv4Addr(
-            publicAddress=SingleIpv4Addr(value="192.168.1.1"),
+        ipv4Address=DeviceIpv4Address(
+            publicAddress="192.168.1.1",
             publicPort=Port(value=8080),
         ),
     )

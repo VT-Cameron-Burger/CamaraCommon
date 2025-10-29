@@ -51,9 +51,7 @@ setup(
     project_urls={
         "Bug Reports": "https://github.com/VT-Cameron-Burger/CamaraCommon/issues",
         "Source": "https://github.com/VT-Cameron-Burger/CamaraCommon",
-        "Documentation": (
-            "https://github.com/VT-Cameron-Burger/CamaraCommon#readme"
-        ),
+        "Documentation": "https://github.com/VT-Cameron-Burger/CamaraCommon#readme",
         "CAMARA Project": "https://github.com/camaraproject",
         "CAMARA Specification": "https://github.com/camaraproject/Commonalities",
     },

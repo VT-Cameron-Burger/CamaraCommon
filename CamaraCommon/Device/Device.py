@@ -2,10 +2,8 @@
 
 from typing import Optional
 from pydantic import BaseModel, model_validator
-from Communication import PhoneNumber
-from Communication import NetworkAccessIdentifier
-from Network import DeviceIpv4Addr
-from Network import DeviceIpv6Address
+from CamaraCommon.Communication import PhoneNumber, NetworkAccessIdentifier
+from CamaraCommon.Network import DeviceIpv4Address, DeviceIpv6Address
 
 
 class Device(BaseModel):
@@ -31,7 +29,7 @@ class Device(BaseModel):
 
     phoneNumber: Optional[PhoneNumber] = None
     networkAccessIdentifier: Optional[NetworkAccessIdentifier] = None
-    ipv4Address: Optional[DeviceIpv4Addr] = None
+    ipv4Address: Optional[DeviceIpv4Address] = None
     ipv6Address: Optional[DeviceIpv6Address] = None
 
     @model_validator(mode="after")
